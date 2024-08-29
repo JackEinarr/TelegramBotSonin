@@ -3,6 +3,7 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.filters import CommandStart
+from services import TelegramMessageService
 
 bot = Bot(token='7486884923:AAF_tom9VlE6gHPu0yR96xK_kKBpStCHisY', default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 dp = Dispatcher(storage=MemoryStorage())
@@ -14,6 +15,10 @@ async def command_start_handler(message: types.Message) -> None:
 
 @dp.message()
 async def send_cocktail_recipe(message: types.Message) -> None:
+
+    service = TelegramMessageService(message)
+    service.processing()
+
     if message.text == "Отправь рецепт коктейля":
         await message.answer(text="""Вот простой рецепт коктейля Мохито, который легко приготовить!
            Ингридиенты:
