@@ -12,7 +12,28 @@ dp = Dispatcher(storage=MemoryStorage())
 async def command_start_handler(message: types.Message) -> None:
     await message.answer("Привет!")
 
-
 @dp.message()
-async def message_handler(message: types.Message) -> None:
-    await message.answer(text=message.text)
+async def send_cocktail_recipe(message: types.Message) -> None:
+    if message.text == "Отправь рецепт коктейля":
+        await message.answer(text="""Вот простой рецепт коктейля Мохито, который легко приготовить!
+           Ингридиенты:
+           1. 50мл рома
+           2. Сок 1 лайма 
+           3. 1-2 чайные ложки сахара
+           4. 6-8 листиков свежей мяты.
+           5. Газированная вода
+           7. Газированная вода
+           Наслаждайся!
+           """)
+    elif message.text == "Еще рецепт":
+        await message.answer(text="""Рецепт коктейля Маргарита, который тебе понравится!
+        Ингредиенты:
+        1. 50 мл текилы
+        2. 25 мл апельсинового ликера
+        3. 25 мл сока лайма
+        4. Соль для ободка стакана
+        5. Лёд
+        Пробуй!
+        """)
+    else:
+        await message.answer(text=message.text)
