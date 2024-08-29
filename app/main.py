@@ -3,7 +3,6 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.filters import CommandStart
-from aiogram.methods.send_message import SendMessage
 
 bot = Bot(token='7486884923:AAF_tom9VlE6gHPu0yR96xK_kKBpStCHisY', default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 dp = Dispatcher(storage=MemoryStorage())
@@ -16,5 +15,4 @@ async def command_start_handler(message: types.Message) -> None:
 
 @dp.message()
 async def message_handler(message: types.Message) -> None:
-    #await SendMessage(chat_id=message.from_user.id, text=message.text)
     await message.answer(text=message.text)
