@@ -1,5 +1,5 @@
 import asyncio
-from app import bot, dp
+from main import bot, dp
 
 
 async def main():
