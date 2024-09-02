@@ -1,6 +1,5 @@
 import asyncio
-from app import bot, dp
-
+from main import bot, dp
 
 async def main():
     await bot.delete_webhook(drop_pending_updates=True)
