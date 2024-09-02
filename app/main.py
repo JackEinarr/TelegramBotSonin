@@ -49,3 +49,7 @@ async def send_cocktail_recipe(message: types.Message) -> None:
 @dp.callback_query(F.data == 'registration')
 async def callback_query_registration(callback_query: CallbackQuery):
     await callback_query.message.answer('Хорошо, приступим ко второму вопросу.')
+
+@dp.callback_query(F.data == 'information')
+async def information_about_bot(callback_query: CallbackQuery):
+    await callback_query.message.edit_text(text='Данный бот нужен,чтобы вы смогли быстро найти рецепт коктейля.')
