@@ -1,11 +1,12 @@
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
-from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.filters import CommandStart
+from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.types import CallbackQuery
 
 from app.common.keyboard import keyboard_registration
+from app.common.keyboard.back import keyboard_changes
 from services import TelegramMessageService
 
 bot = Bot(token='7486884923:AAF_tom9VlE6gHPu0yR96xK_kKBpStCHisY', default=DefaultBotProperties(parse_mode=ParseMode.HTML))
@@ -52,4 +53,11 @@ async def callback_query_registration(callback_query: CallbackQuery):
 
 @dp.callback_query(F.data == 'information')
 async def information_about_bot(callback_query: CallbackQuery):
-    await callback_query.message.edit_text(text='Данный бот нужен,чтобы вы смогли быстро найти рецепт коктейля.')
+    await callback_query.message.answer(text='Данный бот нужен,чтобы вы смогли быстро найти рецепт коктейля.', reply_markup=keyboard_changes)
+
+@dp.callback_query(F.data == 'back')
+async def going_back(callback_query: CallbackQuery):
+    await callback_query.message.edit_text(text='Назад')
+
+
+
